@@ -1,33 +1,41 @@
 package com.diego.jpa_empleos;
 
-import java.util.List;
+//import java.util.List;
 
-import org.springframework.boot.CommandLineRunner;
+//import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+/* 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import com.diego.jpa_empleos.models.Categoria;
 import com.diego.jpa_empleos.repository.CategoriasJPARepository;
-
+*/
 @SpringBootApplication
-public class JpaEmpleosApplication implements CommandLineRunner {
+public class JpaEmpleosApplication // implements CommandLineRunner 
+{
 
+	public static void main(String[] args) {
+		SpringApplication.run(JpaEmpleosApplication.class, args);
+	}
+	/* 
 	private final CategoriasJPARepository categoriasJPARepo;
 
 	public JpaEmpleosApplication(CategoriasJPARepository categoriasJPARepo) {
 		this.categoriasJPARepo = categoriasJPARepo;
 	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(JpaEmpleosApplication.class, args);
-	}
+	
 
 	@Override
 	public void run(String... args) throws Exception {
 		buscarTodosPaginacionOrdenadosAscendente();
+	}
+
+	private void borrarTodasEnBloque() {
+		categoriasJPARepo.deleteAllInBatch();
 	}
 
 	private void buscarTodosPaginacionOrdenadosDescendente() {
@@ -80,10 +88,7 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 		}
 	}
 
-	private void borrarTodasEnBloque() {
-		categoriasJPARepo.deleteAllInBatch();
-	}
-
+	
 	private void guardar() {
 		System.out.println("guardando");
 	}
@@ -91,4 +96,5 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 	private void eliminar() {
 		System.out.println("eliminando");
 	}
+	*/
 }

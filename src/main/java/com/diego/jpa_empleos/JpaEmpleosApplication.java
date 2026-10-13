@@ -23,7 +23,7 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		buscarVacantes();
+		buscarVacantesRelacionCategoriaNombre();
 	}
 
 	private void guardar() {
@@ -38,6 +38,15 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 		List<Vacante> vacantes = vacantesRepo.findAll();
 		for (Vacante vacante : vacantes) {
 			System.out.println(vacante.getId() + ". " + vacante.getNombre());
+		}
+	}
+
+	// Buscar vacantes agregando categoria y nombre
+	public void buscarVacantesRelacionCategoriaNombre() {
+		List<Vacante> vacantes = vacantesRepo.findAll();
+		for (Vacante vacante : vacantes) {
+			System.out.println(vacante.getId() + ". " + vacante.getNombre() +
+					" -> " + vacante.getCategoria().getNombre());
 		}
 	}
 }

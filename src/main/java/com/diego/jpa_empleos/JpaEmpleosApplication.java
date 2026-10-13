@@ -1,8 +1,11 @@
 package com.diego.jpa_empleos;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.diego.jpa_empleos.models.Categoria;
 import com.diego.jpa_empleos.models.EstatusVacante;
 import com.diego.jpa_empleos.models.Perfil;
+import com.diego.jpa_empleos.models.Usuario;
 import com.diego.jpa_empleos.models.Vacante;
 import com.diego.jpa_empleos.repository.PerfilesRepository;
 import com.diego.jpa_empleos.repository.UsuarioRepository;
@@ -35,7 +39,7 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		crearPerfiles();
+		crearUsuarioConPerfiles();
 	}
 
 	private void crearPerfiles() {
@@ -54,6 +58,27 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 		perfiles.add(perfil2);
 		perfiles.add(perfil3);
 		return perfiles;
+	}
+
+	private void crearUsuarioConPerfiles() {
+		Usuario nuevoUsuario = new Usuario();
+		nuevoUsuario.setNombre("José García");
+		nuevoUsuario.setEmail("jose@gmail.com");
+		nuevoUsuario.setUsername("joseg"); // 👈 nombre de usuario
+		nuevoUsuario.setPassword("12345");
+		nuevoUsuario.setEstatus(1); // activo por defecto
+		nuevoUsuario.setFechaRegistro(LocalDate.now()); // 👈 fecha actual
+		// Supongamos que ya tienes dos perfiles obtenidos del repositorio
+		Perfil perfil1 = new Perfil();
+		perfil1.setId(2);
+		Perfil perfil2 = new Perfil();
+		perfil2.setId(3);
+		// Crear el conjunto de perfiles y asignarlo
+		Set<Perfil> perfilesUsuario = new HashSet<>();
+		perfilesUsuario.add(perfil1);
+		perfilesUsuario.add(perfil2);
+		nuevoUsuario.setPerfiles(perfilesUsuario);
+		usuarioRepo.save(nuevoUsuario);
 	}
 
 	private void guardar() {

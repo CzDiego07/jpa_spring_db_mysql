@@ -1,5 +1,5 @@
 package com.diego.jpa_empleos;
-
+/*
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
@@ -9,9 +9,10 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
+*/
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+/* 
 import com.diego.jpa_empleos.models.Categoria;
 import com.diego.jpa_empleos.models.EstatusVacante;
 import com.diego.jpa_empleos.models.Perfil;
@@ -20,9 +21,11 @@ import com.diego.jpa_empleos.models.Vacante;
 import com.diego.jpa_empleos.repository.PerfilesRepository;
 import com.diego.jpa_empleos.repository.UsuarioRepository;
 import com.diego.jpa_empleos.repository.VacantesRepository;
-
+ */
 @SpringBootApplication
-public class JpaEmpleosApplication implements CommandLineRunner {
+public class JpaEmpleosApplication //implements CommandLineRunner 
+{
+	/* 
 	private final VacantesRepository vacantesRepo;
 	private final PerfilesRepository perfilesRepo;
 	private final UsuarioRepository usuarioRepo;
@@ -33,11 +36,11 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 		this.perfilesRepo = perfilesRepo;
 		this.usuarioRepo = usuarioRepo;
 	}
-
+	*/
 	public static void main(String[] args) {
 		SpringApplication.run(JpaEmpleosApplication.class, args);
 	}
-
+	/* 
 	@Override
 	public void run(String... args) throws Exception {
 		buscarUsuario();
@@ -138,4 +141,5 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 		vacante.setCategoria(categoria);
 		vacantesRepo.save(vacante);
 	}
+	*/
 }

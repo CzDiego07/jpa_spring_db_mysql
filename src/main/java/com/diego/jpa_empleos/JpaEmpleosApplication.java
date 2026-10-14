@@ -24,7 +24,7 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		buscarVacantesPorEstatus();
+		buscarVacantesPorDestacadoEstatus();
 	}
 
 	private void buscarVacantesPorEstatus() {
@@ -34,6 +34,17 @@ public class JpaEmpleosApplication implements CommandLineRunner {
 		for (Vacante vacante : vacantesAprobadas) {
 			System.out.println(vacante.getId() + ": " + vacante.getNombre() + " - " +
 					vacante.getEstatus());
+		}
+	}
+
+	private void buscarVacantesPorDestacadoEstatus() {
+		List<Vacante> vacantesAprobadasYDestacadas = vacantesRepo
+				.findByDestacadoAndEstatusOrderByIdDesc(1, EstatusVacante.Aprobada);
+		System.out.println("Registros encontrados: " +
+				vacantesAprobadasYDestacadas.size());
+		for (Vacante vacante : vacantesAprobadasYDestacadas) {
+			System.out.println(vacante.getId() + ": " + vacante.getNombre() + " - " +
+					vacante.getEstatus() + ", destacada: " + vacante.getDestacado());
 		}
 	}
 
